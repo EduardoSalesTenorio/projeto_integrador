@@ -1,20 +1,35 @@
 import 'package:flutter/material.dart';
+import '../telas/menu.dart';
 
 
-class BotaoMenu extends StatelessWidget{
+class BotaoMenu extends StatelessWidget {
+  BotaoMenu(this.texto, this.cor);
+  String texto = "";
+  final Color cor;
 
-  BotaoMenu();
+  Widget build(BuildContext context) {
 
 
-  Widget build(BuildContext context){
-    return               OutlinedButton(onPressed: (){}, child: Text("Testando Botão"),
-        style: OutlinedButton.styleFrom(
-            backgroundColor: Colors.purple,
+
+
+    return Container(
+
+      width: 250,
+      child:
+        OutlinedButton(
+          onPressed: () {
+            Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Menu()),
+          );},
+          child: Text(texto, style: TextStyle(fontSize: 25),),
+          style: OutlinedButton.styleFrom(
+            backgroundColor: cor,
             foregroundColor: Colors.white,
-            padding: EdgeInsets.all(20)
-        )//Fim estilo
+            padding: EdgeInsets.all(20),
+          ),
+          //Fim estilo
+        ),
     );
   }
-
-
 }

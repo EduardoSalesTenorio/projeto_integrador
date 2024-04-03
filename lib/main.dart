@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'telas/home.dart';
+import 'telas/menu.dart';
 import 'package:flutter/services.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class App extends StatelessWidget {
       initialRoute: 'telas/home',
       routes: {
         'telas/home': (context) => Home(),
+        'telas/menu': (context) => Menu(),
       },
     );
   }
