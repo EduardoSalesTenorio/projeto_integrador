@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'telas/home.dart';
 import 'telas/menu.dart';
+import 'telas/exercicios.dart';
 import 'package:flutter/services.dart';
 
 void main() {
@@ -18,10 +19,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'telas/home',
+      initialRoute: 'telas/exercicios',
       routes: {
         'telas/home': (context) => Home(),
         'telas/menu': (context) => Menu(),
+        'telas/exercicios': (context) => Exercicios(),
       },
     );
   }

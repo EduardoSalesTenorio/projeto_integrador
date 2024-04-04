@@ -18,25 +18,52 @@ class Menu extends StatelessWidget{
 
         padding: EdgeInsets.all(30),
         
-        child: Row(
-          children: [
-            Text("Testando"),
+        child: Expanded(
+          child: SingleChildScrollView(
+            //scrollDirection: Axis.horizontal,
+              child: Column(
+                children: [
 
-            BotaoNiveis(),
-            SizedBox(width: 10,),
-            BotaoNiveis(),
+                  Row(
 
+                    children: [
 
-          ],
+                      BotaoNiveis(),
+                      BotaoNiveis(),
+                      BotaoNiveis(),
+
+                    ],
+                  ),
+
+                  SizedBox(height: 10,),
+
+                  Row(
+
+                    children: [
+
+                      BotaoNiveis(),
+                      BotaoNiveis(),
+
+                    ],
+                  ),
+
+                  SizedBox(height: 10,),
+
+                  Row(
+
+                    children: [
+
+                      BotaoNiveis(),
+                      BotaoNiveis(),
+
+                    ],
+                  ),
+
+                ],
+              )
+          ),
         ),
-        
-        
-      ),
-      
-      
-      
-    );
-  }
+      ));
 
-
+}
 }

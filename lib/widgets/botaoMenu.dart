@@ -7,14 +7,12 @@ class BotaoMenu extends StatelessWidget {
   String texto = "";
   final Color cor;
 
+
   Widget build(BuildContext context) {
-
-
-
 
     return Container(
 
-      width: 250,
+      width: 200,
       child:
         OutlinedButton(
           onPressed: () {
