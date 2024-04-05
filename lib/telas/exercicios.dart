@@ -31,7 +31,7 @@ class Exercicios extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 100,)
+                    SizedBox(height: 100)
                   ],
                 ),
                 SizedBox(height: 15),
@@ -48,9 +48,7 @@ class Exercicios extends StatelessWidget {
                         SizedBox(width: 20),
                         Column(
                           children: [
-
                             Imagem('assets/imagens/Arara.png'),
-
                             SizedBox(height: 10),
                             Text(
                               " _ _ ",
@@ -61,9 +59,11 @@ class Exercicios extends StatelessWidget {
                         SizedBox(width: 20),
                         Column(
                           children: [
-                            BotaoExercicios("Sa", Color.fromRGBO(65, 177, 79, 1)),
+                            BotaoExercicios(
+                                "Sa", Color.fromRGBO(65, 177, 79, 1)),
                             SizedBox(height: 10),
-                            BotaoExercicios("Ca", Color.fromRGBO(147, 35, 133, 1)),
+                            BotaoExercicios(
+                                "Ca", Color.fromRGBO(147, 35, 133, 1)),
                             SizedBox(height: 30),
                           ],
                         )
