@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/imagens/cenario/
     - assets/imagens/
+    - assets/videos
 
 
 

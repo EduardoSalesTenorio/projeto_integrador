@@ -19,7 +19,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'telas/exercicios',
+      initialRoute: 'telas/home',
       routes: {
         'telas/home': (context) => Home(),
         'telas/menu': (context) => Menu(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/botaoNiveis.dart';
-import '../widgets/botaoMenu.dart';
+import '../widgets/botaoExercicios.dart';
+import '../widgets/imagem.dart';
 
 class Exercicios extends StatelessWidget {
   @override
@@ -47,10 +48,9 @@ class Exercicios extends StatelessWidget {
                         SizedBox(width: 20),
                         Column(
                           children: [
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellowAccent.withOpacity(0.5),
-                            ),
+
+                            Imagem('assets/imagens/Arara.png'),
+
                             SizedBox(height: 10),
                             Text(
                               " _ _ ",
@@ -61,9 +61,9 @@ class Exercicios extends StatelessWidget {
                         SizedBox(width: 20),
                         Column(
                           children: [
-                            BotaoMenu("Sa", Color.fromRGBO(65, 177, 79, 1)),
+                            BotaoExercicios("Sa", Color.fromRGBO(65, 177, 79, 1)),
                             SizedBox(height: 10),
-                            BotaoMenu("Ca", Color.fromRGBO(147, 35, 133, 1)),
+                            BotaoExercicios("Ca", Color.fromRGBO(147, 35, 133, 1)),
                             SizedBox(height: 30),
                           ],
                         )
