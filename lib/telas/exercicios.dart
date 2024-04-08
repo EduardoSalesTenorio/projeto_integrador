@@ -6,9 +6,17 @@ import '../widgets/VideoPlayerWidget.dart';
 class Exercicios extends StatefulWidget {
   @override
   State<Exercicios> createState() => _ExerciciosState();
+
+
+
+
 }
 
 class _ExerciciosState extends State<Exercicios> {
+
+  List<String> respostas = ['Maçã', 'Banana', 'Laranja', 'Morango'];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,10 +79,10 @@ class _ExerciciosState extends State<Exercicios> {
                           child: Column(
                             children: [
                               BotaoExercicios(
-                                  "Sa", Color.fromRGBO(65, 177, 79, 1)),
+                                  respostas[0], Color.fromRGBO(65, 177, 79, 1)),
                               SizedBox(height: 10),
                               BotaoExercicios(
-                                  "Ca", Color.fromRGBO(147, 35, 133, 1)),
+                                  respostas[1], Color.fromRGBO(147, 35, 133, 1)),
                               SizedBox(height: 30),
                             ],
                           )),

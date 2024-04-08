@@ -20,6 +20,7 @@ class _BotaoExerciciosState extends State<BotaoExercicios> {
       child: Container(
         width: 200,
         child: OutlinedButton(
+
           onPressed: () {
             setState(() {
               _isVisible = false; // Torna o botão invisível quando clicado
