@@ -13,12 +13,12 @@ void main() {
   runApp(App());
 }
 
- class App extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'telas/exercicios',
+      initialRoute: 'telas/home',
       routes: {
         'telas/home': (context) => Home(),
         'telas/menu': (context) => Menu(),

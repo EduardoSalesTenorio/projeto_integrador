@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import '../telas/menu.dart';
-
-// O botão fica invisivel depois do toque
 
 class BotaoExercicios extends StatefulWidget {
   final String texto;
