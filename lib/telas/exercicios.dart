@@ -6,16 +6,10 @@ import '../widgets/VideoPlayerWidget.dart';
 class Exercicios extends StatefulWidget {
   @override
   State<Exercicios> createState() => _ExerciciosState();
-
-
-
-
 }
 
 class _ExerciciosState extends State<Exercicios> {
-
-  List<String> respostas = ['Maçã', 'Banana', 'Laranja', 'Morango'];
-
+  List<String> respostas = ['Maçã', 'Banana', 'Melão'];
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +53,8 @@ class _ExerciciosState extends State<Exercicios> {
                           child: Container(
                             child: Column(children: [
                               VideoPlayerWidget(
-                                  videoPath: 'assets/imagens/videos/_Arara.mp4'),
+                                  videoPath:
+                                      'assets/imagens/videos/_Arara.mp4'),
                             ]),
                           )),
                       SizedBox(width: 20),
@@ -78,11 +73,16 @@ class _ExerciciosState extends State<Exercicios> {
                           flex: 3,
                           child: Column(
                             children: [
-                              BotaoExercicios(
-                                  respostas[0], Color.fromRGBO(65, 177, 79, 1)),
-                              SizedBox(height: 10),
-                              BotaoExercicios(
-                                  respostas[1], Color.fromRGBO(147, 35, 133, 1)),
+                              ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: respostas.length,
+                                itemBuilder: (context, index) {
+                                  return BotaoExercicios(
+                                    respostas[index],
+                                    Color.fromRGBO(65, 177, 79, 1),
+                                  );
+                                },
+                              ),
                               SizedBox(height: 30),
                             ],
                           )),

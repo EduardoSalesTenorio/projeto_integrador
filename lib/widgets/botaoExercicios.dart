@@ -17,25 +17,31 @@ class _BotaoExerciciosState extends State<BotaoExercicios> {
   Widget build(BuildContext context) {
     return Visibility(
       visible: _isVisible,
-      child: Container(
-        width: 200,
-        child: OutlinedButton(
-
-          onPressed: () {
-            setState(() {
-              _isVisible = false; // Torna o botão invisível quando clicado
-            });
-          },
-          child: Text(
-            widget.texto,
-            style: TextStyle(fontSize: 25),
+      child: Column(
+        children: [
+          SizedBox(height: 5),
+          SizedBox(
+            width: 250, // Define a largura do botão
+            child: OutlinedButton(
+              onPressed: () {
+                setState(() {
+                  _isVisible = false; // Torna o botão invisível quando clicado
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  widget.texto,
+                  style: TextStyle(fontSize: 25),
+                ),
+              ),
+              style: OutlinedButton.styleFrom(
+                backgroundColor: widget.cor,
+                foregroundColor: Colors.white,
+              ),
+            ),
           ),
-          style: OutlinedButton.styleFrom(
-            backgroundColor: widget.cor,
-            foregroundColor: Colors.white,
-            padding: EdgeInsets.all(20),
-          ),
-        ),
+        ],
       ),
     );
   }
