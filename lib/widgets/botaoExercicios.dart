@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class BotaoExercicios extends StatefulWidget {
   final String texto;
   final Color cor;
+  final void Function() quandoSelecionado;
 
-  BotaoExercicios(this.texto, this.cor);
+  BotaoExercicios(this.texto, this.cor, this.quandoSelecionado);
 
   @override
   _BotaoExerciciosState createState() => _BotaoExerciciosState();
@@ -27,9 +28,10 @@ class _BotaoExerciciosState extends State<BotaoExercicios> {
                 setState(() {
                   _isVisible = false; // Torna o botão invisível quando clicado
                 });
+                widget.quandoSelecionado(); // Chama a função quando o botão é selecionado
               },
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(10),
                 child: Text(
                   widget.texto,
                   style: TextStyle(fontSize: 25),

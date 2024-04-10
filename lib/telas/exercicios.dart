@@ -9,7 +9,17 @@ class Exercicios extends StatefulWidget {
 }
 
 class _ExerciciosState extends State<Exercicios> {
-  List<String> respostas = ['Maçã', 'Banana', 'Melão'];
+  List<String> respostas = ['ra', 'A', 'ra'];
+  String respostaUsuario = "_______";
+
+  void _resposta(String texto) {
+    setState(() {
+
+
+
+      respostaUsuario = texto; // Atualiza o texto da resposta do usuário
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +64,7 @@ class _ExerciciosState extends State<Exercicios> {
                             child: Column(children: [
                               VideoPlayerWidget(
                                   videoPath:
-                                      'assets/imagens/videos/_Arara.mp4'),
+                                  'assets/imagens/videos/_Arara.mp4'),
                             ]),
                           )),
                       SizedBox(width: 20),
@@ -63,7 +73,7 @@ class _ExerciciosState extends State<Exercicios> {
                           Imagem('assets/imagens/Arara.png'),
                           SizedBox(height: 10),
                           Text(
-                            " _ _ ",
+                            respostaUsuario,
                             style: TextStyle(fontSize: 25),
                           )
                         ],
@@ -80,6 +90,7 @@ class _ExerciciosState extends State<Exercicios> {
                                   return BotaoExercicios(
                                     respostas[index],
                                     Color.fromRGBO(65, 177, 79, 1),
+                                        () => _resposta(respostas[index]), // Corrige a assinatura da função de callback
                                   );
                                 },
                               ),
