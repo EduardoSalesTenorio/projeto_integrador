@@ -11,14 +11,22 @@ class Exercicios extends StatefulWidget {
 class _ExerciciosState extends State<Exercicios> {
   List<String> respostas = ['ra', 'A', 'ra'];
   String respostaUsuario = "_______";
+  int conteBotoes = 0;
 
   void _resposta(String texto) {
     setState(() {
-
-
-
-      respostaUsuario = texto; // Atualiza o texto da resposta do usuário
+      if (respostaUsuario == "_______") {
+        respostaUsuario = texto; // Atualiza o texto da resposta do usuário
+      } else {
+        respostaUsuario = respostaUsuario + texto;
+      }
     });
+
+    _conteBotoes();
+  }
+
+  void _conteBotoes() {
+    this.conteBotoes++;
   }
 
   @override
@@ -64,7 +72,7 @@ class _ExerciciosState extends State<Exercicios> {
                             child: Column(children: [
                               VideoPlayerWidget(
                                   videoPath:
-                                  'assets/imagens/videos/_Arara.mp4'),
+                                      'assets/imagens/videos/_Arara.mp4'),
                             ]),
                           )),
                       SizedBox(width: 20),
@@ -89,8 +97,8 @@ class _ExerciciosState extends State<Exercicios> {
                                 itemBuilder: (context, index) {
                                   return BotaoExercicios(
                                     respostas[index],
-                                    Color.fromRGBO(65, 177, 79, 1),
-                                        () => _resposta(respostas[index]), // Corrige a assinatura da função de callback
+                                    () => _resposta(respostas[
+                                        index]), // Corrige a assinatura da função de callback
                                   );
                                 },
                               ),

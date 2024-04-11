@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class BotaoExercicios extends StatefulWidget {
   final String texto;
-  final Color cor;
   final void Function() quandoSelecionado;
 
-  BotaoExercicios(this.texto, this.cor, this.quandoSelecionado);
+
+
+
+  BotaoExercicios(this.texto, this.quandoSelecionado);
 
   @override
   _BotaoExerciciosState createState() => _BotaoExerciciosState();
@@ -13,6 +16,17 @@ class BotaoExercicios extends StatefulWidget {
 
 class _BotaoExerciciosState extends State<BotaoExercicios> {
   bool _isVisible = true;
+
+  List<Color> cores = [
+    Color.fromRGBO(65, 177, 79, 1),
+    Color.fromRGBO(147, 35, 133, 1),
+    Color.fromRGBO(20, 126, 186, 1),
+    Color.fromRGBO(230, 126, 37, 1),
+    Color.fromRGBO(37, 68, 65, 1),
+    Color.fromRGBO(255, 193, 207, 1),
+    Color.fromRGBO(0, 108, 103, 1),
+    Color.fromRGBO(20, 126, 186, 1),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +52,7 @@ class _BotaoExerciciosState extends State<BotaoExercicios> {
                 ),
               ),
               style: OutlinedButton.styleFrom(
-                backgroundColor: widget.cor,
+                backgroundColor: cores[Random().nextInt(cores.length)],
                 foregroundColor: Colors.white,
               ),
             ),
