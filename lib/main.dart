@@ -18,11 +18,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'telas/exercicios',
+      initialRoute: 'menu',
       routes: {
-        'telas/home': (context) => Home(),
-        'telas/menu': (context) => Menu(),
-        'telas/exercicios': (context) => Exercicios(),
+        'home': (context) => Home(),
+        'menu': (context) => Menu(),
+        'exercicios': (context) => Exercicios(),
       },
     );
   }
