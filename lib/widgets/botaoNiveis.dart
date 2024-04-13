@@ -12,7 +12,7 @@ class BotaoNiveis extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Exercicios()),
+          MaterialPageRoute(builder: (context) => Exercicios(texto)),
         );},
       style: OutlinedButton.styleFrom(
         shape: RoundedRectangleBorder(

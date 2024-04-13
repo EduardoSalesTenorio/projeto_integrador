@@ -4,6 +4,10 @@ import '../widgets/imagem.dart';
 import '../widgets/VideoPlayerWidget.dart';
 
 class Exercicios extends StatefulWidget {
+  final String textoTeste;
+
+  Exercicios(this.textoTeste);
+
   @override
   State<Exercicios> createState() => _ExerciciosState();
 }
@@ -45,6 +49,7 @@ class _ExerciciosState extends State<Exercicios> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Text(widget.textoTeste), // Corrigindo o acesso ao textoTeste
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

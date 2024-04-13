@@ -11,7 +11,6 @@ class Menu extends StatelessWidget {
 
   Menu(this.textoTeste);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +24,8 @@ class Menu extends StatelessWidget {
           ),
           padding: EdgeInsets.all(30),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Centraliza verticalmente
+            mainAxisAlignment:
+                MainAxisAlignment.center, // Centraliza verticalmente
             children: [
               Text(textoTeste),
               _buildRow(linhaUm),
@@ -47,10 +47,11 @@ class Menu extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center, // Centraliza horizontalmente
       children: List.generate(
         quantidade,
-            (index) {
+        (index) {
           cont++; // Atualiza o contador de botões
           return Container(
-            child: BotaoNiveis(cont.toString()), // Passa o número do botão como texto
+            child: BotaoNiveis(
+                cont.toString()), // Passa o número do botão como texto
           );
         },
       ),
