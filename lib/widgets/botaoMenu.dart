@@ -13,7 +13,7 @@ class BotaoMenu extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Menu()),
+            MaterialPageRoute(builder: (context) => Menu(texto)),
           );
         },
         child: Text(

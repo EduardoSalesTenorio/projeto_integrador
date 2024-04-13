@@ -7,6 +7,10 @@ class Menu extends StatelessWidget {
   int linhaTres = 7;
   int linhaQuatro = 2;
   int cont = 0;
+  String textoTeste = "--------";
+
+  Menu(this.textoTeste);
+
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +27,7 @@ class Menu extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, // Centraliza verticalmente
             children: [
+              Text(textoTeste),
               _buildRow(linhaUm),
               SizedBox(height: 10),
               _buildRow(linhaDois),

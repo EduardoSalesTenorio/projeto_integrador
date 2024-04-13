@@ -21,7 +21,7 @@ class App extends StatelessWidget {
       initialRoute: 'home',
       routes: {
         'home': (context) => Home(),
-        'menu': (context) => Menu(),
+        'menu': (context) => Menu(""),
         'exercicios': (context) => Exercicios(),
       },
     );
