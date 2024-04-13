@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import '../telas/exercicios.dart';
 
 class BotaoNiveis extends StatelessWidget {
+  String texto = "";
 
-  BotaoNiveis();
+  BotaoNiveis(this.texto);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class BotaoNiveis extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              '1',
+              texto,
               style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Icon(Icons.star, color: Colors.yellowAccent.withOpacity(0.5),),

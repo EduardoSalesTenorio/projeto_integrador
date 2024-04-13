@@ -40,7 +40,7 @@ class _ExerciciosState extends State<Exercicios> {
             fit: BoxFit.cover,
           ),
         ),
-        child: SingleChildScrollView(
+        child: Expanded(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,7 +56,7 @@ class _ExerciciosState extends State<Exercicios> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 100)
+                  SizedBox(height: 50)
                 ],
               ),
               SizedBox(height: 15),

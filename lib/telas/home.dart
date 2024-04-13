@@ -14,9 +14,9 @@ class Home extends StatelessWidget {
             image: AssetImage("imagens/cenario/CenarioPronto.jpg"),
             fit: BoxFit.cover,
           )),
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.fromLTRB(0, 50, 15, 0),
           child: Expanded(
-            child: SingleChildScrollView(
+            child: Expanded(
                 //scrollDirection: Axis.horizontal,
                 child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
               Column(
@@ -31,14 +31,12 @@ class Home extends StatelessWidget {
                   BotaoMenu("Objetos", Color.fromRGBO(230, 126, 37, 1)),
                 ],
               ),
-              SizedBox(width: 20),
+              SizedBox(width: 15),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   BotaoMenu("Brinquedos", Color.fromRGBO(37, 68, 65, 1)),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  SizedBox(height: 5),
                   BotaoMenu("Pessoas", Color.fromRGBO(255, 193, 207, 1)),
                   SizedBox(height: 5),
                   BotaoMenu("Aleatorio", Color.fromRGBO(0, 108, 103, 1)),
