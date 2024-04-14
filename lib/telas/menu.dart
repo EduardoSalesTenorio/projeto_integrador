@@ -27,7 +27,6 @@ class Menu extends StatelessWidget {
             mainAxisAlignment:
                 MainAxisAlignment.center, // Centraliza verticalmente
             children: [
-              Text(textoTeste),
               _buildRow(linhaUm),
               SizedBox(height: 10),
               _buildRow(linhaDois),

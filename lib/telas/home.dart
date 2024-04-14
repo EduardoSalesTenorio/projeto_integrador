@@ -41,7 +41,7 @@ class Home extends StatelessWidget {
                   SizedBox(height: 5),
                   BotaoMenu("Aleatorio", Color.fromRGBO(0, 108, 103, 1)),
                   SizedBox(height: 5),
-                  BotaoMenu("Sobre", Color.fromRGBO(20, 126, 186, 1)),
+                 // BotaoMenu("Sobre", Color.fromRGBO(20, 126, 186, 1)),
                 ],
               ),
             ])),

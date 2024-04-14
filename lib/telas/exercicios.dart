@@ -49,7 +49,6 @@ class _ExerciciosState extends State<Exercicios> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(widget.textoTeste), // Corrigindo o acesso ao textoTeste
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -87,8 +86,10 @@ class _ExerciciosState extends State<Exercicios> {
                           SizedBox(height: 10),
                           Text(
                             respostaUsuario,
-                            style: TextStyle(fontSize: 25),
-                          )
+                            style: TextStyle(fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),),
                         ],
                       ),
                       SizedBox(width: 20),
