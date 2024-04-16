@@ -3,22 +3,33 @@ import '../telas/exercicios.dart';
 
 class BotaoNiveis extends StatelessWidget {
   String texto = "";
+  final estrela;
 
-  BotaoNiveis(this.texto);
+  //;
+
+  BotaoNiveis(this.texto, this.estrela);
 
   @override
   Widget build(BuildContext context) {
+    IconData icone;
+
+    if (estrela >= int.parse(texto)) {
+      icone = Icons.star;
+    } else {
+      icone = Icons.lock;
+    }
+
     return OutlinedButton(
       onPressed: () {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => Exercicios(texto)),
-        );},
+        );
+      },
       style: OutlinedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-
         backgroundColor: Colors.black.withOpacity(0.5),
       ),
       child: SizedBox(
@@ -30,9 +41,15 @@ class BotaoNiveis extends StatelessWidget {
           children: [
             Text(
               texto,
-              style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
             ),
-            Icon(Icons.star, color: Colors.yellowAccent.withOpacity(0.5),),
+            Icon(
+              icone,
+              color: Colors.yellowAccent.withOpacity(0.5),
+            ),
           ],
         ),
       ),
