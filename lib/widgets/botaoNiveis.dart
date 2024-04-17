@@ -12,11 +12,14 @@ class BotaoNiveis extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     IconData icone;
+    Color corIcone;
 
     if (estrela >= int.parse(texto)) {
       icone = Icons.star;
+      corIcone = Colors.yellow.withOpacity(0.9);
     } else {
       icone = Icons.lock;
+      corIcone = Colors.white24.withOpacity(0.5);
     }
 
     return OutlinedButton(
@@ -48,7 +51,7 @@ class BotaoNiveis extends StatelessWidget {
             ),
             Icon(
               icone,
-              color: Colors.yellowAccent.withOpacity(0.5),
+              color: corIcone,
             ),
           ],
         ),

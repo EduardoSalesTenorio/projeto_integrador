@@ -13,9 +13,17 @@ class Exercicios extends StatefulWidget {
 }
 
 class _ExerciciosState extends State<Exercicios> {
-  List<String> respostas = ['ra', 'A', 'ra'];
+  String perguntaBancoDados = "A_ra_ra";
+  List<String> perguntas = [];
   String respostaUsuario = "_______";
   int conteBotoes = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    perguntas = perguntaBancoDados.split("_");
+    perguntas.shuffle();
+  }
 
   void _resposta(String texto) {
     setState(() {
@@ -25,7 +33,6 @@ class _ExerciciosState extends State<Exercicios> {
         respostaUsuario = respostaUsuario + texto;
       }
     });
-
     _conteBotoes();
   }
 
@@ -86,10 +93,12 @@ class _ExerciciosState extends State<Exercicios> {
                           SizedBox(height: 10),
                           Text(
                             respostaUsuario,
-                            style: TextStyle(fontSize: 30,
+                            style: TextStyle(
+                              fontSize: 30,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                            ),),
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(width: 20),
@@ -99,11 +108,11 @@ class _ExerciciosState extends State<Exercicios> {
                             children: [
                               ListView.builder(
                                 shrinkWrap: true,
-                                itemCount: respostas.length,
+                                itemCount: perguntas.length,
                                 itemBuilder: (context, index) {
                                   return BotaoExercicios(
-                                    respostas[index],
-                                    () => _resposta(respostas[
+                                    perguntas[index],
+                                    () => _resposta(perguntas[
                                         index]), // Corrige a assinatura da função de callback
                                   );
                                 },
