@@ -5,9 +5,6 @@ class BotaoExercicios extends StatefulWidget {
   final String texto;
   final void Function() quandoSelecionado;
 
-
-
-
   BotaoExercicios(this.texto, this.quandoSelecionado);
 
   @override
@@ -42,7 +39,8 @@ class _BotaoExerciciosState extends State<BotaoExercicios> {
                 setState(() {
                   _isVisible = false; // Torna o botão invisível quando clicado
                 });
-                widget.quandoSelecionado(); // Chama a função quando o botão é selecionado
+                widget
+                    .quandoSelecionado(); // Chama a função quando o botão é selecionado
               },
               child: Padding(
                 padding: const EdgeInsets.all(10),

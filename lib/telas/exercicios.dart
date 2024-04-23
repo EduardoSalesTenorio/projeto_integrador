@@ -20,15 +20,18 @@ class _ExerciciosState extends State<Exercicios> {
 
   @override
   void initState() {
+    //Quebra a String em vetor de acordo com o "split"
+    //Isto faz automatico em palavras ou frases
     super.initState();
     perguntas = perguntaBancoDados.split("_");
     perguntas.shuffle();
   }
 
   void _resposta(String texto) {
+    // Atualiza o texto da resposta do usuário quando vai apertando os botões
     setState(() {
       if (respostaUsuario == "_______") {
-        respostaUsuario = texto; // Atualiza o texto da resposta do usuário
+        respostaUsuario = texto;
       } else {
         respostaUsuario = respostaUsuario + texto;
       }
@@ -56,6 +59,7 @@ class _ExerciciosState extends State<Exercicios> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              //Frase de juntar as silabas
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -71,12 +75,15 @@ class _ExerciciosState extends State<Exercicios> {
                 ],
               ),
               SizedBox(height: 15),
+
+              //Contem o componentes centralizados
               Center(
                 child: Align(
                   alignment: Alignment.center,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      //Video
                       Expanded(
                           flex: 4,
                           child: Container(
@@ -87,6 +94,8 @@ class _ExerciciosState extends State<Exercicios> {
                             ]),
                           )),
                       SizedBox(width: 20),
+
+                      //Imagem e resposta do usuario
                       Column(
                         children: [
                           Imagem('assets/imagens/Arara.png'),
@@ -102,6 +111,8 @@ class _ExerciciosState extends State<Exercicios> {
                         ],
                       ),
                       SizedBox(width: 20),
+
+                      //Botoes
                       Expanded(
                           flex: 3,
                           child: Column(
