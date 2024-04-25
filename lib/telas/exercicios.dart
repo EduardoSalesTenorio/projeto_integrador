@@ -57,7 +57,6 @@ class _ExerciciosState extends State<Exercicios> {
         ),
         child: Expanded(
           child: Column(
-
             children: [
               SizedBox(height: 5),
 
@@ -116,22 +115,19 @@ class _ExerciciosState extends State<Exercicios> {
                           Row(
                             children: [
                               OutlinedButton(
-                                onPressed: () {},
-                                child: Icon(
-                                  Icons.refresh,
-                                  color: Colors.white
-                                ),
-                              ),
-
+                                  onPressed: () {},
+                                  child:
+                                      Icon(Icons.refresh, color: Colors.white),
+                                  style: OutlinedButton.styleFrom(
+                                      backgroundColor:
+                                          Color.fromRGBO(0, 0, 0, 0.4))),
                               SizedBox(width: 10),
-
                               OutlinedButton(
-                                onPressed: () {},
-                                child: Icon(
-                                    Icons.check,
-                                    color: Colors.white
-                                ),
-                              )
+                                  onPressed: () {},
+                                  child: Icon(Icons.check, color: Colors.white),
+                                  style: OutlinedButton.styleFrom(
+                                      backgroundColor:
+                                          Color.fromRGBO(0, 0, 0, 0.4)))
                             ],
                           )
                         ],
