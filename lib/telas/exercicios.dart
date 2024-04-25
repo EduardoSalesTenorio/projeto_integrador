@@ -47,6 +47,7 @@ class _ExerciciosState extends State<Exercicios> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        padding: EdgeInsets.all(5),
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -56,9 +57,10 @@ class _ExerciciosState extends State<Exercicios> {
         ),
         child: Expanded(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+              
             children: [
+              SizedBox(height: 5),
+
               //Frase de juntar as silabas
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -71,10 +73,9 @@ class _ExerciciosState extends State<Exercicios> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 50)
                 ],
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 10),
 
               //Contem o componentes centralizados
               Center(
@@ -85,9 +86,10 @@ class _ExerciciosState extends State<Exercicios> {
                     children: [
                       //Video
                       Expanded(
-                          flex: 4,
+                          flex: 3,
                           child: Container(
                             child: Column(children: [
+                              //Videos
                               VideoPlayerWidget(
                                   videoPath:
                                       'assets/imagens/videos/_Arara.mp4'),
@@ -108,6 +110,18 @@ class _ExerciciosState extends State<Exercicios> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
+                          SizedBox(height: 10),
+                          Row(
+                            children: [
+                              OutlinedButton(
+                                onPressed: () {},
+                                child: Icon(
+                                  Icons.refresh,
+                                  color: Colors.white
+                                ),
+                              )
+                            ],
+                          )
                         ],
                       ),
                       SizedBox(width: 20),
@@ -128,7 +142,7 @@ class _ExerciciosState extends State<Exercicios> {
                                   );
                                 },
                               ),
-                              SizedBox(height: 30),
+                              SizedBox(height: 10),
                             ],
                           )),
                     ],

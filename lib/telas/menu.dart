@@ -3,7 +3,7 @@ import '../widgets/botaoNiveis.dart';
 
 class Menu extends StatelessWidget {
   int cont = 0;
-  int estrelas = 5;
+  int estrelas = 8;
   String textoTeste = "--------";
 
   Menu(this.textoTeste);
@@ -11,8 +11,7 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Define a quantidade total de botões
-    int quantidadeTotal =
-        25; // Exemplo, você pode substituir por sua própria lógica
+    int quantidadeTotal = 25;
 
     // Calcula o número de linhas necessárias para exibir os botões
     int numeroDeLinhas = (quantidadeTotal / 7).ceil();
