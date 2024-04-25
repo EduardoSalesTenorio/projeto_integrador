@@ -57,7 +57,7 @@ class _ExerciciosState extends State<Exercicios> {
         ),
         child: Expanded(
           child: Column(
-              
+
             children: [
               SizedBox(height: 5),
 
@@ -111,6 +111,8 @@ class _ExerciciosState extends State<Exercicios> {
                             ),
                           ),
                           SizedBox(height: 10),
+
+                          //Botoes de resete e converencia
                           Row(
                             children: [
                               OutlinedButton(
@@ -118,6 +120,16 @@ class _ExerciciosState extends State<Exercicios> {
                                 child: Icon(
                                   Icons.refresh,
                                   color: Colors.white
+                                ),
+                              ),
+
+                              SizedBox(width: 10),
+
+                              OutlinedButton(
+                                onPressed: () {},
+                                child: Icon(
+                                    Icons.check,
+                                    color: Colors.white
                                 ),
                               )
                             ],
