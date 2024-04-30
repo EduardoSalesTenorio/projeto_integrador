@@ -13,10 +13,9 @@ class Exercicios extends StatefulWidget {
 }
 
 class _ExerciciosState extends State<Exercicios> {
-  String perguntaBancoDados = "A_ra_ra";
+  String perguntaBancoDados = "a_borboleta_pousa_na_flor";
   List<String> perguntas = [];
   String respostaUsuario = "_______";
-  int conteBotoes = 0;
 
   @override
   void initState() {
@@ -36,11 +35,6 @@ class _ExerciciosState extends State<Exercicios> {
         respostaUsuario = respostaUsuario + texto;
       }
     });
-    _conteBotoes();
-  }
-
-  void _conteBotoes() {
-    this.conteBotoes++;
   }
 
   @override
@@ -84,8 +78,8 @@ class _ExerciciosState extends State<Exercicios> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       //Video
-                      Expanded(
-                          flex: 3,
+                      Container(
+
                           child: Container(
                             child: Column(children: [
                               //Videos
@@ -101,6 +95,8 @@ class _ExerciciosState extends State<Exercicios> {
                         children: [
                           Imagem('assets/imagens/Arara.png'),
                           SizedBox(height: 10),
+
+                          //resposta do Usuario
                           Text(
                             respostaUsuario,
                             style: TextStyle(
@@ -120,14 +116,14 @@ class _ExerciciosState extends State<Exercicios> {
                                       Icon(Icons.refresh, color: Colors.white),
                                   style: OutlinedButton.styleFrom(
                                       backgroundColor:
-                                          Color.fromRGBO(0, 0, 0, 0.4))),
+                                          Color.fromRGBO(0, 0, 0, 0.6))),
                               SizedBox(width: 10),
                               OutlinedButton(
                                   onPressed: () {},
                                   child: Icon(Icons.check, color: Colors.white),
                                   style: OutlinedButton.styleFrom(
                                       backgroundColor:
-                                          Color.fromRGBO(0, 0, 0, 0.4)))
+                                          Color.fromRGBO(0, 0, 0, 0.6)))
                             ],
                           )
                         ],

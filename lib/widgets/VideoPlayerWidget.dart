@@ -30,8 +30,8 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Container(
-            width: 400, // largura em pixels
-            height: 300, // altura em pixels
+            width: 250, // largura em pixels
+            height: 310, // altura em pixels
             child: VideoPlayer(_controller),
           );
         } else {

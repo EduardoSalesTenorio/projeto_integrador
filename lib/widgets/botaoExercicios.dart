@@ -31,9 +31,9 @@ class _BotaoExerciciosState extends State<BotaoExercicios> {
       visible: _isVisible,
       child: Column(
         children: [
-          SizedBox(height: 5),
+          SizedBox(height: 3),
           SizedBox(
-            width: 250, // Define a largura do botão
+            // width: 250, // Define a largura do botão
             child: OutlinedButton(
               onPressed: () {
                 setState(() {
@@ -46,7 +46,7 @@ class _BotaoExerciciosState extends State<BotaoExercicios> {
                 padding: const EdgeInsets.all(10),
                 child: Text(
                   widget.texto,
-                  style: TextStyle(fontSize: 25),
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
               style: OutlinedButton.styleFrom(
