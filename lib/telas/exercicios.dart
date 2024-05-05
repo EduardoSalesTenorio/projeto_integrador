@@ -14,25 +14,45 @@ class Exercicios extends StatefulWidget {
 
 class _ExerciciosState extends State<Exercicios> {
   String perguntaBancoDados = "a_borboleta_pousa_na_flor";
+  String respostaCerta = "";
   List<String> perguntas = [];
   String respostaUsuario = "_______";
+  List<bool> visibilidadeBotoes = [];
 
   @override
   void initState() {
-    //Quebra a String em vetor de acordo com o "split"
-    //Isto faz automatico em palavras ou frases
     super.initState();
     perguntas = perguntaBancoDados.split("_");
     perguntas.shuffle();
+    respostaCerta = perguntaBancoDados.replaceAll("_", "");
+    visibilidadeBotoes = List.filled(perguntas.length, true);
+  }
+
+  void _conferir() {
+    String resposta = respostaUsuario.replaceAll(" ", "");
+    if (resposta == respostaCerta) {
+      // Lógica quando a resposta está correta
+    } else {
+      // Lógica quando a resposta está incorreta
+    }
+  }
+
+  void _resetarQuestao() {
+    setState(() {
+      respostaUsuario = "_______";
+      perguntas.shuffle();
+      respostaCerta = perguntaBancoDados.replaceAll("_", "");
+      visibilidadeBotoes = List.filled(perguntas.length, true);
+    });
   }
 
   void _resposta(String texto) {
-    // Atualiza o texto da resposta do usuário quando vai apertando os botões
     setState(() {
       if (respostaUsuario == "_______") {
         respostaUsuario = texto;
       } else {
-        respostaUsuario = respostaUsuario + texto;
+        respostaUsuario =
+            '$respostaUsuario $texto'; // Adiciona um espaço entre as palavras
       }
     });
   }
@@ -49,112 +69,111 @@ class _ExerciciosState extends State<Exercicios> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Expanded(
-          child: Column(
-            children: [
-              SizedBox(height: 5),
-
-              //Frase de juntar as silabas
-              Row(
+        child: Column(
+          children: [
+            SizedBox(height: 5),
+            //Frase de juntar as sílabas
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Junte as sílabas",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            //Contém os componentes centralizados
+            Center(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Junte as sílabas",
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                  //Video
+                  Container(
+                    child: Column(
+                      children: [
+                        //Videos
+                        VideoPlayerWidget(
+                          videoPath: 'assets/imagens/videos/_Arara.mp4',
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  //Imagem e resposta do usuário
+                  Column(
+                    children: [
+                      Imagem('assets/imagens/Arara.png'),
+                      SizedBox(height: 5),
+                      //Resposta do Usuário
+                      Container(
+                        width: 150, // Define a largura do container
+                        child: Text(
+                          respostaUsuario,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          softWrap: true,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      //Botões de resete e conferência
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          //Botão Resetar
+                          OutlinedButton(
+                            onPressed: _resetarQuestao,
+                            child: Icon(Icons.refresh, color: Colors.white),
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: Color.fromRGBO(0, 0, 0, 0.6),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          //Botão Conferir
+                          OutlinedButton(
+                            onPressed: _conferir,
+                            child: Icon(Icons.check, color: Colors.white),
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: Color.fromRGBO(0, 0, 0, 0.6),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 20),
+                  //Botões
+                  Expanded(
+                    child: Column(
+                      children: List.generate(perguntas.length, (index) {
+                        return Visibility(
+                          visible: visibilidadeBotoes[index],
+                          child: BotaoExercicios(
+                            texto: perguntas[index],
+                            onPressed: () {
+                              setState(() {
+                                _resposta(perguntas[index]);
+                                visibilidadeBotoes[index] = false;
+                              });
+                            },
+                          ),
+                        );
+                      }),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 10),
-
-              //Contem o componentes centralizados
-              Center(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      //Video
-                      Container(
-
-                          child: Container(
-                            child: Column(children: [
-                              //Videos
-                              VideoPlayerWidget(
-                                  videoPath:
-                                      'assets/imagens/videos/_Arara.mp4'),
-                            ]),
-                          )),
-                      SizedBox(width: 20),
-
-                      //Imagem e resposta do usuario
-                      Column(
-                        children: [
-                          Imagem('assets/imagens/Arara.png'),
-                          SizedBox(height: 10),
-
-                          //resposta do Usuario
-                          Text(
-                            respostaUsuario,
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 10),
-
-                          //Botoes de resete e converencia
-                          Row(
-                            children: [
-                              OutlinedButton(
-                                  onPressed: () {},
-                                  child:
-                                      Icon(Icons.refresh, color: Colors.white),
-                                  style: OutlinedButton.styleFrom(
-                                      backgroundColor:
-                                          Color.fromRGBO(0, 0, 0, 0.6))),
-                              SizedBox(width: 10),
-                              OutlinedButton(
-                                  onPressed: () {},
-                                  child: Icon(Icons.check, color: Colors.white),
-                                  style: OutlinedButton.styleFrom(
-                                      backgroundColor:
-                                          Color.fromRGBO(0, 0, 0, 0.6)))
-                            ],
-                          )
-                        ],
-                      ),
-                      SizedBox(width: 20),
-
-                      //Botoes
-                      Expanded(
-                          flex: 3,
-                          child: Column(
-                            children: [
-                              ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: perguntas.length,
-                                itemBuilder: (context, index) {
-                                  return BotaoExercicios(
-                                    perguntas[index],
-                                    () => _resposta(perguntas[
-                                        index]), // Corrige a assinatura da função de callback
-                                  );
-                                },
-                              ),
-                              SizedBox(height: 10),
-                            ],
-                          )),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
