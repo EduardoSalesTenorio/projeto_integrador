@@ -37,15 +37,6 @@ class _ExerciciosState extends State<Exercicios> {
     }
   }
 
-  void _resetarQuestao() {
-    setState(() {
-      respostaUsuario = "_______";
-      perguntas.shuffle();
-      respostaCerta = perguntaBancoDados.replaceAll("_", "");
-      visibilidadeBotoes = List.filled(perguntas.length, true);
-    });
-  }
-
   void _resposta(String texto) {
     setState(() {
       if (respostaUsuario == "_______") {
@@ -54,6 +45,15 @@ class _ExerciciosState extends State<Exercicios> {
         respostaUsuario =
             '$respostaUsuario $texto'; // Adiciona um espaço entre as palavras
       }
+    });
+  }
+
+  void _resetarQuestao() {
+    setState(() {
+      respostaUsuario = "_______";
+      perguntas.shuffle();
+      respostaCerta = perguntaBancoDados.replaceAll("_", "");
+      visibilidadeBotoes = List.filled(perguntas.length, true);
     });
   }
 
@@ -103,6 +103,7 @@ class _ExerciciosState extends State<Exercicios> {
                       ],
                     ),
                   ),
+
                   SizedBox(width: 10),
                   //Imagem e resposta do usuário
                   Column(
@@ -129,6 +130,7 @@ class _ExerciciosState extends State<Exercicios> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+
                           //Botão Resetar
                           OutlinedButton(
                             onPressed: _resetarQuestao,
@@ -138,6 +140,7 @@ class _ExerciciosState extends State<Exercicios> {
                             ),
                           ),
                           SizedBox(width: 10),
+
                           //Botão Conferir
                           OutlinedButton(
                             onPressed: _conferir,
@@ -151,6 +154,7 @@ class _ExerciciosState extends State<Exercicios> {
                     ],
                   ),
                   SizedBox(width: 20),
+
                   //Botões
                   Expanded(
                     child: Column(
