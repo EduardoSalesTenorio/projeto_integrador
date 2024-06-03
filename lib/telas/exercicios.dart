@@ -4,9 +4,9 @@ import '../widgets/imagem.dart';
 import '../widgets/VideoPlayerWidget.dart';
 
 class Exercicios extends StatefulWidget {
-  final String textoTeste;
+  final String numeroExercicio;
 
-  Exercicios(this.textoTeste);
+  Exercicios(this.numeroExercicio);
 
   @override
   State<Exercicios> createState() => _ExerciciosState();
