@@ -4,9 +4,9 @@ import '../widgets/botaoNiveis.dart';
 class Menu extends StatelessWidget {
   int cont = 0;
   int estrelas = 10;
-  String textoTeste = "--------";
+  String menuEscolha = "";
 
-  Menu(this.textoTeste);
+  Menu(this.menuEscolha);
 
   @override
   Widget build(BuildContext context) {
