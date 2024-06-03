@@ -6,11 +6,13 @@ import 'telas/exercicios.dart';
 
 void main() {
   // Define a orientação da tela para paisagem
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeRight,
     DeviceOrientation.landscapeLeft,
-  ]);
-  runApp(App());
+  ]).then((_) {
+    runApp(App());
+  });
 }
 
 class App extends StatelessWidget {

@@ -11,6 +11,7 @@ class BotaoExercicios extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
+      width: 200,
       child: OutlinedButton(
         onPressed: onPressed,
         child: Text(

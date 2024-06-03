@@ -13,7 +13,7 @@ class Exercicios extends StatefulWidget {
 }
 
 class _ExerciciosState extends State<Exercicios> {
-  String perguntaBancoDados = "a_borboleta_pousa_na_flor";
+  String perguntaBancoDados = "Eduardo_Sales_Tenorio";
   String respostaCerta = "";
   List<String> perguntas = [];
   String respostaUsuario = "_______";
@@ -65,7 +65,7 @@ class _ExerciciosState extends State<Exercicios> {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("imagens/cenario/CenarioPronto.jpg"),
+            image: AssetImage("assets/imagens/cenario/CenarioPronto.jpg"),
             fit: BoxFit.cover,
           ),
         ),

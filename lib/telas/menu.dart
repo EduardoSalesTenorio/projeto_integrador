@@ -3,7 +3,7 @@ import '../widgets/botaoNiveis.dart';
 
 class Menu extends StatelessWidget {
   int cont = 0;
-  int estrelas = 8;
+  int estrelas = 10;
   String textoTeste = "--------";
 
   Menu(this.textoTeste);
@@ -11,29 +11,29 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Define a quantidade total de botões
-    int quantidadeTotal = 25;
+    int quantidadeTotal = 20;
 
     // Calcula o número de linhas necessárias para exibir os botões
     int numeroDeLinhas = (quantidadeTotal / 7).ceil();
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent, // Define a cor de fundo como transparente
-        elevation: 0, // Remove a sombra da AppBar
-        title: Text("Menu"), // Adicione um título para o AppBar
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Use o ícone de seta para trás
-          onPressed: () {
-            // Navegue de volta para a tela anterior usando Navigator.pop(context)
-            Navigator.pop(context);
-          },
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent, // Define a cor de fundo como transparente
+      //   elevation: 0, // Remove a sombra da AppBar
+      //   title: Text("Menu"), // Adicione um título para o AppBar
+      //   leading: IconButton(
+      //     icon: Icon(Icons.arrow_back), // Use o ícone de seta para trás
+      //     onPressed: () {
+      //       // Navegue de volta para a tela anterior usando Navigator.pop(context)
+      //       Navigator.pop(context);
+      //     },
+      //   ),
+      // ),
       body: Center(
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("imagens/cenario/CenarioPronto.jpg"),
+              image: AssetImage("assets/imagens/cenario/CenarioPronto.jpg"),
               fit: BoxFit.cover,
             ),
           ),

@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
             body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-            image: AssetImage("imagens/cenario/CenarioPronto.jpg"),
+            image: AssetImage("assets/imagens/cenario/CenarioPronto.jpg"),
             fit: BoxFit.cover,
           )),
           padding: EdgeInsets.fromLTRB(0, 50, 15, 0),
