@@ -34,6 +34,7 @@ class _ExerciciosState extends State<Exercicios> {
       // Lógica quando a resposta está correta
     } else {
       // Lógica quando a resposta está incorreta
+      _resetarQuestao();
     }
   }
 
