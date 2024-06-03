@@ -20,6 +20,7 @@ class Conexao {
           Palavra VARCHAR(50) NOT NULL,
           NivelDificuldade INTEGER NOT NULL,
           CategoriaID INTEGER,
+          Status BOOLEAN,
           Ordem INTEGER NOT NULL,
           FOREIGN KEY (CategoriaID) REFERENCES Categorias(CategoriaID)
         )
