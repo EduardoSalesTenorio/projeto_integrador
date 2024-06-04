@@ -18,6 +18,8 @@ class _ExerciciosState extends State<Exercicios> {
   List<String> perguntas = [];
   String respostaUsuario = "_______";
   List<bool> visibilidadeBotoes = [];
+  int cont = 0;
+
 
   @override
   void initState() {
@@ -131,7 +133,6 @@ class _ExerciciosState extends State<Exercicios> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-
                           //Botão Resetar
                           OutlinedButton(
                             onPressed: _resetarQuestao,

@@ -3,7 +3,7 @@ import '../widgets/botaoNiveis.dart';
 
 class Menu extends StatelessWidget {
   int cont = 0;
-  int botoesEstrelas = 10; //QUANTIDADE DE BOTÕES COM ESTRELAS
+  int botoesEstrelas = 5; //QUANTIDADE DE BOTÕES COM ESTRELAS
   String menuEscolha = "";
 
   Menu(this.menuEscolha);
