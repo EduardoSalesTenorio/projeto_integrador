@@ -4,8 +4,9 @@ import '../telas/exercicios.dart';
 class BotaoNiveis extends StatelessWidget {
   String texto = "";
   final estrela;
+  final int numeroMaximo;
 
-  BotaoNiveis(this.texto, this.estrela);
+  BotaoNiveis(this.texto, this.estrela, this.numeroMaximo);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class BotaoNiveis extends StatelessWidget {
       onPressed = () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Exercicios(texto)),
+          MaterialPageRoute(builder: (context) => Exercicios(int.parse(texto), numeroMaximo)),
         );
       };
     } else {

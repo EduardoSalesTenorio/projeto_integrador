@@ -1,34 +1,41 @@
 import 'package:flutter/material.dart';
 import '../widgets/botaoNiveis.dart';
+import '/controller/palavra_controller.dart';
 
-class Menu extends StatelessWidget {
+class Menu extends StatefulWidget {
+  final String nomeCategoria;
+
+  Menu(this.nomeCategoria);
+
+  @override
+  _MenuState createState() => _MenuState();
+}
+
+class _MenuState extends State<Menu> {
   int cont = 0;
-  int botoesEstrelas = 5; //QUANTIDADE DE BOTÕES COM ESTRELAS
-  String menuEscolha = "";
+  int totalPalavras = 0;
+  int totalPalavrasComTrue = 0;
 
-  Menu(this.menuEscolha);
+  @override
+  void initState() {
+    super.initState();
+    _carregarDados();
+  }
+
+  Future<void> _carregarDados() async {
+    final dados = await PalavraController()
+        .countPalavrasByCategoria(widget.nomeCategoria);
+    setState(() {
+      totalPalavras = dados['total'] ?? 0;
+      totalPalavrasComTrue = dados['trueStatus'] ?? 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Define a quantidade total de botões
-    int quantidadeTotal = 20;
-
-    // Calcula o número de linhas necessárias para exibir os botões
-    int numeroDeLinhas = (quantidadeTotal / 7).ceil();
+    int numeroDeLinhas = (totalPalavras / 7).ceil();
 
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent, // Define a cor de fundo como transparente
-      //   elevation: 0, // Remove a sombra da AppBar
-      //   title: Text("Menu"), // Adicione um título para o AppBar
-      //   leading: IconButton(
-      //     icon: Icon(Icons.arrow_back), // Use o ícone de seta para trás
-      //     onPressed: () {
-      //       // Navegue de volta para a tela anterior usando Navigator.pop(context)
-      //       Navigator.pop(context);
-      //     },
-      //   ),
-      // ),
       body: Center(
         child: Container(
           decoration: BoxDecoration(
@@ -45,7 +52,7 @@ class Menu extends StatelessWidget {
               for (int i = 0; i < numeroDeLinhas; i++)
                 Column(
                   children: [
-                    _buildRow(quantidadeTotal),
+                    _buildRow(totalPalavras),
                     SizedBox(height: 5), // Espaço vertical entre as linhas
                   ],
                 ),
@@ -68,7 +75,7 @@ class Menu extends StatelessWidget {
               padding:
                   EdgeInsets.symmetric(horizontal: 5), // Espaço entre os botões
               child: Container(
-                child: BotaoNiveis(cont.toString(), botoesEstrelas),
+                child: BotaoNiveis(cont.toString(), totalPalavrasComTrue, totalPalavras),
               ),
             );
           } else {

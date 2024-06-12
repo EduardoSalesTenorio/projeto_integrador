@@ -1,22 +1,77 @@
+import 'package:sqflite/sqflite.dart';
 import '/controller/categoria_controller.dart';
 import '/controller/palavra_controller.dart';
 import '/model/categoria_model.dart';
 import '/model/palavra_model.dart';
+import '../controller/conexao.dart';
 
 class Dados {
   final CategoriaController categoriaController = CategoriaController();
   final PalavraController palavraController = PalavraController();
 
   Future<void> seed() async {
-    // Inserir Categorias
-    int transporteId = await categoriaController.inserir(CategoriaModel(nomeCategoria: "Meios de Transporte"));
-    int frutasId = await categoriaController.inserir(CategoriaModel(nomeCategoria: "Frutas"));
+    try {
+      // Inserir Categorias
+      int animaisId = await categoriaController
+          .inserir(CategoriaModel(nomeCategoria: "Animais"));
+      int frutasId = await categoriaController
+          .inserir(CategoriaModel(nomeCategoria: "Comidas"));
+      int naturezaId = await categoriaController
+          .inserir(CategoriaModel(nomeCategoria: "Natureza"));
+      int objetosId = await categoriaController
+          .inserir(CategoriaModel(nomeCategoria: "Objetos"));
+      int brinquedosId = await categoriaController
+          .inserir(CategoriaModel(nomeCategoria: "Brinquedos"));
+      int pessoasId = await categoriaController
+          .inserir(CategoriaModel(nomeCategoria: "Pessoas"));
 
-    // Inserir Palavras
-    await palavraController.inserir(PalavraModel(palavra: "Avião", nivelDificuldade: 1, categoriaID: transporteId, ordem: 1));
-    await palavraController.inserir(PalavraModel(palavra: "Carro", nivelDificuldade: 1, categoriaID: transporteId, ordem: 2));
-    await palavraController.inserir(PalavraModel(palavra: "Maçã", nivelDificuldade: 1, categoriaID: frutasId, ordem: 1));
-    await palavraController.inserir(PalavraModel(palavra: "Banana", nivelDificuldade: 1, categoriaID: frutasId, ordem: 2));
-    await palavraController.inserir(PalavraModel(palavra: "Abacaxi", nivelDificuldade: 1, categoriaID: frutasId, ordem: 3));
+      // Popular o banco de dados com palavras de exemplo
+      await popularBancoDeDados(animaisId, frutasId, naturezaId, objetosId, brinquedosId, pessoasId);
+
+      print("Banco de dados populado com sucesso.");
+    } catch (e) {
+      print("Erro ao popular o banco de dados: $e");
+    }
   }
+
+  Future<void> popularBancoDeDados(int transporteId, int frutasId, int naturezaId, int objetosId, int brinquedosId, int pessoasId) async {
+    try {
+      final Database db = await Conexao().conect();
+
+      // Exemplo de palavras
+      List<PalavraModel> palavras = [
+
+        PalavraModel(
+          palavra: "MA_ÇÃ", nivelDificuldade: 1, categoriaID: frutasId, status: false, ordem: 1,
+        ),
+
+        PalavraModel(
+          palavra: "A_BA_CA_TE", nivelDificuldade: 1, categoriaID: frutasId, status: false, ordem: 2,
+        ),
+
+        PalavraModel(
+          palavra: "JA_CA", nivelDificuldade: 1, categoriaID: frutasId, status: false, ordem: 3,
+        ),
+
+        PalavraModel(
+          palavra: "CA_JU", nivelDificuldade: 1, categoriaID: frutasId, status: false, ordem: 4,
+        ),
+      ];
+
+      // Inserir as palavras no banco de dados
+      for (var palavra in palavras) {
+        await palavraController.inserir(palavra);
+      }
+
+      print("Palavras inseridas com sucesso.");
+    } catch (e) {
+      print("Erro ao inserir palavras: $e");
+    }
+  }
+}
+
+// Seu método seed() pode ser chamado no main() ou onde for apropriado no seu aplicativo
+void main() async {
+  Dados dados = Dados();
+  await dados.seed();
 }

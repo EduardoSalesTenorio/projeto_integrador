@@ -4,9 +4,10 @@ import '../widgets/imagem.dart';
 import '../widgets/VideoPlayerWidget.dart';
 
 class Exercicios extends StatefulWidget {
-  final String numeroExercicio;
+  final int numeroExercicio;
+  final int numeroMaximo;
 
-  Exercicios(this.numeroExercicio);
+  Exercicios(this.numeroExercicio, this.numeroMaximo);
 
   @override
   State<Exercicios> createState() => _ExerciciosState();
