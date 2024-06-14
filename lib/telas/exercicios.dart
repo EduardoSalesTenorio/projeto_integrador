@@ -6,8 +6,9 @@ import '../widgets/VideoPlayerWidget.dart';
 class Exercicios extends StatefulWidget {
   final int numeroExercicio;
   final int numeroMaximo;
+  final String nomeCategoria;
 
-  Exercicios(this.numeroExercicio, this.numeroMaximo);
+  Exercicios(this.numeroExercicio, this.numeroMaximo, this.nomeCategoria);
 
   @override
   State<Exercicios> createState() => _ExerciciosState();
@@ -21,10 +22,13 @@ class _ExerciciosState extends State<Exercicios> {
   List<bool> visibilidadeBotoes = [];
   int cont = 0;
 
-
   @override
   void initState() {
     super.initState();
+    _carregarQuestao();
+  }
+
+  void _carregarQuestao() {
     perguntas = perguntaBancoDados.split("_");
     perguntas.shuffle();
     respostaCerta = perguntaBancoDados.replaceAll("_", "");
@@ -39,6 +43,7 @@ class _ExerciciosState extends State<Exercicios> {
       // Lógica quando a resposta está incorreta
       _resetarQuestao();
     }
+    cont++;
   }
 
   void _resposta(String texto) {

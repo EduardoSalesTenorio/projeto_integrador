@@ -75,7 +75,7 @@ class _MenuState extends State<Menu> {
               padding:
                   EdgeInsets.symmetric(horizontal: 5), // Espaço entre os botões
               child: Container(
-                child: BotaoNiveis(cont.toString(), totalPalavrasComTrue, totalPalavras),
+                child: BotaoNiveis(cont.toString(), totalPalavrasComTrue, totalPalavras, widget.nomeCategoria),
               ),
             );
           } else {

@@ -5,8 +5,9 @@ class BotaoNiveis extends StatelessWidget {
   String texto = "";
   final estrela;
   final int numeroMaximo;
+  final String nomeCategoria;
 
-  BotaoNiveis(this.texto, this.estrela, this.numeroMaximo);
+  BotaoNiveis(this.texto, this.estrela, this.numeroMaximo, this.nomeCategoria);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class BotaoNiveis extends StatelessWidget {
       onPressed = () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Exercicios(int.parse(texto), numeroMaximo)),
+          MaterialPageRoute(builder: (context) => Exercicios(int.parse(texto), numeroMaximo, nomeCategoria)),
         );
       };
     } else {

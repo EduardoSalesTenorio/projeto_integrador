@@ -36,7 +36,7 @@ class App extends StatelessWidget {
       routes: {
         'home': (context) => Home(),
         'menu': (context) => Menu("Animais"), // Passar o nome da categoria desejada
-        'exercicios': (context) => Exercicios(0,0),
+        'exercicios': (context) => Exercicios(0,0,""),
       },
     );
   }
