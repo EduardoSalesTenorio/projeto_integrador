@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../controller/palavra_controller.dart';
+import '../model/palavra_model.dart';
 import '../widgets/botaoExercicios.dart';
 import '../widgets/imagem.dart';
 import '../widgets/VideoPlayerWidget.dart';
@@ -22,11 +24,32 @@ class _ExerciciosState extends State<Exercicios> {
   List<bool> visibilidadeBotoes = [];
   int cont = 0;
 
+  List<String> palavras = [];
+  final PalavraController _palavraController = PalavraController();
+
   @override
   void initState() {
     super.initState();
     _carregarQuestao();
   }
+
+
+  Future<void> _carregarPalavras() async {
+    try {
+      List<String> listaPalavras = await _palavraController.buscarPalavrasPorCategoria(widget.nomeCategoria);
+      setState(() {
+        palavras = listaPalavras;
+      });
+    } catch (e) {
+      print('Erro ao carregar palavras: $e');
+    }
+  }
+
+
+
+
+
+
 
   void _carregarQuestao() {
     perguntas = perguntaBancoDados.split("_");
