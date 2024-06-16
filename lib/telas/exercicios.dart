@@ -97,12 +97,9 @@ class _ExerciciosState extends State<Exercicios> {
 
   void _carregarQuestao() {
     if (palavras.isNotEmpty) {
-      pergunta = palavras[0].split("_");
-
+      pergunta = palavras[cont].split("_");
       pergunta.shuffle();
-
-      respostaCerta = palavras[0].replaceAll("_", "");
-
+      respostaCerta = palavras[cont].replaceAll("_", "");
       visibilidadeBotoes = List.filled(pergunta.length, true);
     } else {
       print("Nenhuma palavra carregada");
@@ -126,7 +123,7 @@ class _ExerciciosState extends State<Exercicios> {
         respostaUsuario = texto;
       } else {
         respostaUsuario =
-            '$respostaUsuario $texto'; // Adiciona um espaço entre as palavras
+            '$respostaUsuario$texto'; // Adiciona um espaço entre as palavras
       }
     });
   }
