@@ -3,9 +3,9 @@ import 'conexao.dart';
 import '/model/palavra_model.dart';
 
 class PalavraController extends Conexao {
-
   // Método para buscar palavras por categoria
-  Future<List<PalavraModel>> buscarPalavrasPorCategoria(String nomeCategoria) async {
+  Future<List<PalavraModel>> buscarPalavrasPorCategoria(
+      String nomeCategoria) async {
     try {
       final Database db = await conect();
       final List<Map<String, dynamic>> maps = await db.rawQuery('''
@@ -22,6 +22,67 @@ class PalavraController extends Conexao {
           categoriaID: maps[index]['CategoriaID'],
           status: maps[index]['Status'] == 1,
           ordem: maps[index]['Ordem'],
+          caminhoImagem: maps[index]['CaminhoImagem'],
+          caminhoVideo: maps[index]['CaminhoVideo'],
+        );
+      });
+    } catch (e) {
+      print('Erro ao buscar palavras por categoria: $e');
+      return [];
+    }
+  }
+
+
+
+  Future<List<PalavraModel>> buscarCaminhaImagem(
+      String nomeCategoria) async {
+    try {
+      final Database db = await conect();
+      final List<Map<String, dynamic>> maps = await db.rawQuery('''
+        SELECT * FROM Palavras WHERE CategoriaID IN (
+          SELECT CaminhoImagem FROM Categorias WHERE NomeCategoria = ?
+        )
+      ''', [nomeCategoria]);
+
+      return List.generate(maps.length, (index) {
+        return PalavraModel(
+          id: maps[index]['PalavraID'],
+          palavra: maps[index]['Palavra'],
+          nivelDificuldade: maps[index]['NivelDificuldade'],
+          categoriaID: maps[index]['CategoriaID'],
+          status: maps[index]['Status'] == 1,
+          ordem: maps[index]['Ordem'],
+          caminhoImagem: maps[index]['CaminhoImagem'],
+          caminhoVideo: maps[index]['CaminhoVideo'],
+        );
+      });
+    } catch (e) {
+      print('Erro ao buscar palavras por categoria: $e');
+      return [];
+    }
+  }
+
+
+  Future<List<PalavraModel>> buscarCaminhoVideo(
+      String nomeCategoria) async {
+    try {
+      final Database db = await conect();
+      final List<Map<String, dynamic>> maps = await db.rawQuery('''
+        SELECT * FROM Palavras WHERE CategoriaID IN (
+          SELECT CaminhoVideo FROM Categorias WHERE NomeCategoria = ?
+        )
+      ''', [nomeCategoria]);
+
+      return List.generate(maps.length, (index) {
+        return PalavraModel(
+          id: maps[index]['PalavraID'],
+          palavra: maps[index]['Palavra'],
+          nivelDificuldade: maps[index]['NivelDificuldade'],
+          categoriaID: maps[index]['CategoriaID'],
+          status: maps[index]['Status'] == 1,
+          ordem: maps[index]['Ordem'],
+          caminhoImagem: maps[index]['CaminhoImagem'],
+          caminhoVideo: maps[index]['CaminhoVideo'],
         );
       });
     } catch (e) {
@@ -99,6 +160,8 @@ class PalavraController extends Conexao {
           categoriaID: maps[index]['CategoriaID'],
           status: maps[index]['Status'] == 1,
           ordem: maps[index]['Ordem'],
+          caminhoImagem: maps[index]['CaminhoImagem'],
+          caminhoVideo: maps[index]['CaminhoVideo'],
         );
       });
     } catch (e) {

@@ -22,6 +22,8 @@ class Conexao {
           CategoriaID INTEGER,
           Status BOOLEAN,
           Ordem INTEGER NOT NULL,
+          CaminhoImagem VARCHAR(50),
+          CaminhoVideo VARCHAR(50),
           FOREIGN KEY (CategoriaID) REFERENCES Categorias(CategoriaID)
         )
         """);

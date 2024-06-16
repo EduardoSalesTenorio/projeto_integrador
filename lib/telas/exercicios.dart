@@ -24,6 +24,8 @@ class _ExerciciosState extends State<Exercicios> {
   int cont = 0;
 
   List<String> palavras = [];
+  List<String> caminhaImagem = [];
+  List<String> caminhoVideo = [];
   final PalavraController _palavraController = PalavraController();
   bool isLoading = true;
 
@@ -42,6 +44,45 @@ class _ExerciciosState extends State<Exercicios> {
         palavras = listaPalavras.map((palavra) => palavra.palavra).toList();
         isLoading = false;
         if (palavras.isNotEmpty) {
+          _carregarCaminhaImagem();
+        }
+      });
+    } catch (e) {
+      print('Erro ao carregar palavras: $e');
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
+  Future<void> _carregarCaminhaImagem() async {
+    try {
+      List<PalavraModel> listaPalavras =
+          await _palavraController.buscarCaminhaImagem(widget.nomeCategoria);
+      setState(() {
+        caminhaImagem =
+            listaPalavras.map((palavra) => palavra.palavra).toList();
+        isLoading = false;
+        if (caminhaImagem.isNotEmpty) {
+          _carregarCaminhoVideo();
+        }
+      });
+    } catch (e) {
+      print('Erro ao carregar palavras: $e');
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
+  Future<void> _carregarCaminhoVideo() async {
+    try {
+      List<PalavraModel> listaPalavras =
+          await _palavraController.buscarCaminhoVideo(widget.nomeCategoria);
+      setState(() {
+        caminhoVideo = listaPalavras.map((palavra) => palavra.palavra).toList();
+        isLoading = false;
+        if (caminhoVideo.isNotEmpty) {
           _carregarQuestao();
         }
       });

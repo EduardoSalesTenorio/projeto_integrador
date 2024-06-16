@@ -26,7 +26,8 @@ class Dados {
           .inserir(CategoriaModel(nomeCategoria: "Pessoas"));
 
       // Popular o banco de dados com palavras de exemplo
-      await popularBancoDeDados(animaisId, frutasId, naturezaId, objetosId, brinquedosId, pessoasId);
+      await popularBancoDeDados(
+          animaisId, frutasId, naturezaId, objetosId, brinquedosId, pessoasId);
 
       print("Banco de dados populado com sucesso.");
     } catch (e) {
@@ -34,27 +35,48 @@ class Dados {
     }
   }
 
-  Future<void> popularBancoDeDados(int transporteId, int frutasId, int naturezaId, int objetosId, int brinquedosId, int pessoasId) async {
+  Future<void> popularBancoDeDados(int transporteId, int frutasId,
+      int naturezaId, int objetosId, int brinquedosId, int pessoasId) async {
     try {
       final Database db = await Conexao().conect();
 
       // Exemplo de palavras
       List<PalavraModel> palavras = [
-
         PalavraModel(
-          palavra: "MA_ÇÃ", nivelDificuldade: 1, categoriaID: frutasId, status: true, ordem: 1,
+          palavra: "MA_ÇÃ",
+          nivelDificuldade: 1,
+          categoriaID: frutasId,
+          status: true,
+          ordem: 1,
+          caminhoImagem: '',
+          caminhoVideo: '',
         ),
-
         PalavraModel(
-          palavra: "A_BA_CA_TE", nivelDificuldade: 1, categoriaID: frutasId, status: false, ordem: 2,
+          palavra: "JA_CA",
+          nivelDificuldade: 1,
+          categoriaID: frutasId,
+          status: false,
+          ordem: 3,
+          caminhoImagem: '',
+          caminhoVideo: '',
         ),
-
         PalavraModel(
-          palavra: "JA_CA", nivelDificuldade: 1, categoriaID: frutasId, status: false, ordem: 3,
+          palavra: "CA_JU",
+          nivelDificuldade: 1,
+          categoriaID: frutasId,
+          status: false,
+          ordem: 4,
+          caminhoImagem: '',
+          caminhoVideo: '',
         ),
-
         PalavraModel(
-          palavra: "CA_JU", nivelDificuldade: 1, categoriaID: frutasId, status: false, ordem: 4,
+          palavra: "A_BA_CA_TE",
+          nivelDificuldade: 1,
+          categoriaID: frutasId,
+          status: false,
+          ordem: 2,
+          caminhoImagem: '',
+          caminhoVideo: '',
         ),
       ];
 
