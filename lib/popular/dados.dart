@@ -42,7 +42,7 @@ class Dados {
       List<PalavraModel> palavras = [
 
         PalavraModel(
-          palavra: "MA_ÇÃ", nivelDificuldade: 1, categoriaID: frutasId, status: false, ordem: 1,
+          palavra: "MA_ÇÃ", nivelDificuldade: 1, categoriaID: frutasId, status: true, ordem: 1,
         ),
 
         PalavraModel(

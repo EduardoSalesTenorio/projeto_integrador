@@ -3,21 +3,29 @@ import 'conexao.dart';
 import '/model/palavra_model.dart';
 
 class PalavraController extends Conexao {
+
   // Método para buscar palavras por categoria
-  Future<List<String>> buscarPalavrasPorCategoria(String nomeCategoria) async {
+  Future<List<PalavraModel>> buscarPalavrasPorCategoria(String nomeCategoria) async {
     try {
-      final Database db = await Conexao().conect();
-      final List<Map<String, dynamic>> maps = await db.query(
-        'Palavras',
-        where: 'CategoriaID IN (SELECT CategoriaID FROM Categorias WHERE NomeCategoria = ?)',
-        whereArgs: [nomeCategoria],
-      );
+      final Database db = await conect();
+      final List<Map<String, dynamic>> maps = await db.rawQuery('''
+        SELECT * FROM Palavras WHERE CategoriaID IN (
+          SELECT CategoriaID FROM Categorias WHERE NomeCategoria = ?
+        )
+      ''', [nomeCategoria]);
 
       return List.generate(maps.length, (index) {
-        return maps[index]['palavra'] as String;
+        return PalavraModel(
+          id: maps[index]['PalavraID'],
+          palavra: maps[index]['Palavra'],
+          nivelDificuldade: maps[index]['NivelDificuldade'],
+          categoriaID: maps[index]['CategoriaID'],
+          status: maps[index]['Status'] == 1,
+          ordem: maps[index]['Ordem'],
+        );
       });
     } catch (e) {
-      print('Erro ao buscar palavras: $e');
+      print('Erro ao buscar palavras por categoria: $e');
       return [];
     }
   }
