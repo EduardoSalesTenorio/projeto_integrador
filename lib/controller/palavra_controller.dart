@@ -33,16 +33,14 @@ class PalavraController extends Conexao {
   }
 
 
-
-  Future<List<PalavraModel>> buscarCaminhaImagem(
-      String nomeCategoria) async {
+  Future<List<PalavraModel>> buscarCaminhoImagem(String nomeCategoria) async {
     try {
       final Database db = await conect();
       final List<Map<String, dynamic>> maps = await db.rawQuery('''
-        SELECT * FROM Palavras WHERE CategoriaID IN (
-          SELECT CaminhoImagem FROM Categorias WHERE NomeCategoria = ?
-        )
-      ''', [nomeCategoria]);
+      SELECT * FROM Palavras 
+      INNER JOIN Categorias ON Palavras.CategoriaID = Categorias.CategoriaID
+      WHERE Categorias.NomeCategoria = ?
+    ''', [nomeCategoria]);
 
       return List.generate(maps.length, (index) {
         return PalavraModel(
@@ -61,6 +59,7 @@ class PalavraController extends Conexao {
       return [];
     }
   }
+
 
 
   Future<List<PalavraModel>> buscarCaminhoVideo(

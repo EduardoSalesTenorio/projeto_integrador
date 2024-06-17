@@ -25,7 +25,7 @@ class _ExerciciosState extends State<Exercicios> {
   int cont = 0;
 
   List<String> palavras = [];
-  List<String> caminhaImagem = [];
+  List<String> caminhoImagem = [];
   List<String> caminhoVideo = [];
   final PalavraController _palavraController = PalavraController();
   bool isLoading = true;
@@ -34,7 +34,7 @@ class _ExerciciosState extends State<Exercicios> {
   void initState() {
     super.initState();
 
-    cont = widget.numeroExercicio;
+    cont = widget.numeroExercicio - 1;
 
     _carregarDados();
   }
@@ -65,10 +65,10 @@ class _ExerciciosState extends State<Exercicios> {
   Future<void> _carregarCaminhaImagem() async {
     try {
       List<PalavraModel> listaPalavras =
-          await _palavraController.buscarCaminhaImagem(widget.nomeCategoria);
+          await _palavraController.buscarCaminhoImagem(widget.nomeCategoria);
       setState(() {
-        caminhaImagem =
-            listaPalavras.map((palavra) => palavra.palavra).toList();
+        caminhoImagem =
+            listaPalavras.map((caminhoImagem) => caminhoImagem.caminhoImagem).toList();
         isLoading = false;
       });
     } catch (e) {
@@ -77,6 +77,7 @@ class _ExerciciosState extends State<Exercicios> {
         isLoading = false;
       });
     }
+
   }
 
   Future<void> _carregarCaminhoVideo() async {
@@ -84,7 +85,7 @@ class _ExerciciosState extends State<Exercicios> {
       List<PalavraModel> listaPalavras =
           await _palavraController.buscarCaminhoVideo(widget.nomeCategoria);
       setState(() {
-        caminhoVideo = listaPalavras.map((palavra) => palavra.palavra).toList();
+        caminhoVideo = listaPalavras.map((caminhoVideo) => caminhoVideo.caminhoVideo).toList();
         isLoading = false;
       });
     } catch (e) {
@@ -110,6 +111,14 @@ class _ExerciciosState extends State<Exercicios> {
     String resposta = respostaUsuario.replaceAll(" ", "");
     if (resposta == respostaCerta) {
       // Lógica quando a resposta está correta
+
+      if (cont <= widget.numeroMaximo) {
+        cont++;
+        _carregarQuestao();
+      } else {
+        Navigator.pop(context);
+      }
+
     } else {
       // Lógica quando a resposta está incorreta
       _resetarQuestao();
@@ -123,7 +132,7 @@ class _ExerciciosState extends State<Exercicios> {
         respostaUsuario = texto;
       } else {
         respostaUsuario =
-            '$respostaUsuario$texto'; // Adiciona um espaço entre as palavras
+            '$respostaUsuario $texto'; // Adiciona um espaço entre as palavras
       }
     });
   }
@@ -178,7 +187,7 @@ class _ExerciciosState extends State<Exercicios> {
                       children: [
                         //Videos
                         VideoPlayerWidget(
-                          videoPath: 'assets/imagens/videos/_Arara.mp4',
+                          videoPath: caminhoImagem[cont],
                         ),
                       ],
                     ),

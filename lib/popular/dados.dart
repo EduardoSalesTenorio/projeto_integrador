@@ -35,7 +35,7 @@ class Dados {
     }
   }
 
-  Future<void> popularBancoDeDados(int transporteId, int frutasId,
+  Future<void> popularBancoDeDados(int animaisId, int frutasId,
       int naturezaId, int objetosId, int brinquedosId, int pessoasId) async {
     try {
       final Database db = await Conexao().conect();
@@ -43,41 +43,60 @@ class Dados {
       // Exemplo de palavras
       List<PalavraModel> palavras = [
         PalavraModel(
-          palavra: "MA_ÇÃ",
+          palavra: "BO_I",
           nivelDificuldade: 1,
-          categoriaID: frutasId,
+          categoriaID: animaisId,
           status: true,
           ordem: 1,
-          caminhoImagem: '',
-          caminhoVideo: '',
+          caminhoImagem: '"assets/imagens/libras/animais/imagens/Boi.png"',
+          caminhoVideo: '"assets/imagens/libras/animais/videos/boi.mp4"',
         ),
         PalavraModel(
-          palavra: "JA_CA",
+          palavra: "CO_BRA",
           nivelDificuldade: 1,
-          categoriaID: frutasId,
+          categoriaID: animaisId,
           status: false,
           ordem: 3,
-          caminhoImagem: '',
-          caminhoVideo: '',
+          caminhoImagem: '"assets/imagens/libras/animais/imagens/Cobra.png"',
+          caminhoVideo: '"assets/imagens/libras/animais/videos/cobra.mp4"',
         ),
         PalavraModel(
-          palavra: "CA_JU",
+          palavra: "fo_ca",
           nivelDificuldade: 1,
-          categoriaID: frutasId,
+          categoriaID: animaisId,
           status: false,
           ordem: 4,
-          caminhoImagem: '',
-          caminhoVideo: '',
+          caminhoImagem: '"assets/imagens/libras/animais/imagens/Foca.png"',
+          caminhoVideo: '"assets/imagens/libras/animais/videos/foca.mp4"',
         ),
         PalavraModel(
-          palavra: "A_BA_CA_TE",
+          palavra: "GA_TO",
           nivelDificuldade: 1,
-          categoriaID: frutasId,
+          categoriaID: animaisId,
           status: false,
           ordem: 2,
-          caminhoImagem: '',
-          caminhoVideo: '',
+          caminhoImagem: '"assets/imagens/libras/animais/imagens/Gato.png"',
+          caminhoVideo: '"assets/imagens/libras/animais/videos/gato.mp4"',
         ),
+        PalavraModel(
+          palavra: "MOS_CA",
+          nivelDificuldade: 1,
+          categoriaID: animaisId,
+          status: false,
+          ordem: 2,
+          caminhoImagem: '"assets/imagens/libras/animais/imagens/Mosca.png"',
+          caminhoVideo: '"assets/imagens/libras/animais/videos/mosca.mp4"',
+        ),
+        PalavraModel(
+          palavra: "A_RA_NHA",
+          nivelDificuldade: 1,
+          categoriaID: animaisId,
+          status: false,
+          ordem: 2,
+          caminhoImagem: '"assets/imagens/libras/animais/imagens/Aranha.png"',
+          caminhoVideo: '"assets/imagens/libras/animais/videos/aranha.mp4"',
+        ),
+
       ];
 
       // Inserir as palavras no banco de dados
